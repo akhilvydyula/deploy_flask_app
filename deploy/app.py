@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 #load the saved model
 def load_model():
-    return pickle.load(open('iris_model.pkl', 'rb'))
+    return pickle.load(open('tfw_model.pkl', 'rb'))
 
 #home page
 @app.route('/')
@@ -22,7 +22,7 @@ def predict():
     '''
     For rendering results on HTML GUI
     '''
-    labels = ['setosa', 'versicolor', 'virginica']
+    labels = ['Debt collection', 'Credit card or prepaid card', 'Mortgage', 'Checking or savings account', 'Student loan', 'Vehicle loan or lease']
 
     features = [float(x) for x in request.form.values()]
    
@@ -33,7 +33,7 @@ def predict():
 
     result = labels[prediction[0]]
 
-    return render_template('index.html', output='The Flower is {}'.format(result))
+    return render_template('index.html', output='The Product is {}'.format(result))
 
 
 if __name__ == "__main__":
